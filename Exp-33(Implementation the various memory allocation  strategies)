@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <stdlib.h>
+Int main(){
+ Int* ptr;
+ Int n, i;
+ Printf(“Enter number of elements:”);
+ Scanf(“%d”,&n);
+ Printf(“Entered number of elements: %d\n”, n);
+ Ptr = (int*)malloc(n * sizeof(int));
+ If (ptr == NULL) {
+ Printf(“Memory not allocated.\n”);
+ Exit(0);}
+ Else {
+ Printf(“Memory successfully allocated using malloc.\n”);
+ For (i = 0; i < n; ++i) {
+ Ptr[i] = i + 1;}
+ Printf(“The elements of the array are: “);
+ For (i = 0; i < n; ++i) {
+ Printf(“%d, “, ptr[i]); }}
+ Return 0;}
