@@ -1,0 +1,35 @@
+#include <pthread.h> 
+#include <stdio.h> 
+#include <stdlib.h> 
+#include <string.h> 
+#include <unistd.h> 
+Pthread_t tid[2]; 
+Int counter; 
+Pthread_mutex_t lock; 
+Void* trythis(void* arg) { 
+Pthread_mutex_lock(&lock); 
+Unsigned long i = 0; 
+Counter += 1; 
+Printf(“\n Job %d has started\n”, counter); 
+For (i = 0; i < (0xFFFFFFFF); i++) ; 
+Printf(“\n Job %d has finished\n”, counter); 
+Pthread_mutex_unlock(&lock); 
+Return NULL; } 
+Int main(void) { 
+Int i = 0; 
+Int error; 
+If (pthread_mutex_init(&lock, NULL) != 0) { 
+Printf(“\n mutex init has failed\n”); 
+Return 1; } 
+While (i < 2) { 
+Error = pthread_create(&(tid[i]), 
+NULL, 
+&trythis, NULL); 
+If (error != 0) 
+Printf(“\nThread can’t be created :[%s]”, 
+Strerror(error)); 
+I++; } 
+Pthread_join(tid[0], NULL); 
+Pthread_join(tid[1], NULL); 
+Pthread_mutex_destroy(&lock); 
+Return 0; }
