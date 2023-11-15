@@ -1,0 +1,41 @@
+#include <stdio.h>
+Int main(){
+ Int A[100][4];
+ Int i, j, n, total = 0, index, temp;
+ Float avg_wt, avg_tat;
+ Printf(“Enter number of process: “);
+ Scanf(“%d”, &n);
+ Printf(“Enter Burst Time:\n”);
+ For (i = 0; i < n; i++) {
+ Printf(“P%d: “, i + 1);
+ Scanf(“%d”, &A[i][1]);
+ A[i][0] = i + 1;}
+ For (i = 0; i < n; i++) {
+ Index = i;
+ For (j = i + 1; j < n; j++)
+ If (A[j][1] < A[index][1])
+ Index = j;
+ Temp = A[i][1];
+ A[i][1] = A[index][1];
+ A[index][1] = temp;
+ Temp = A[i][0];
+ A[i][0] = A[index][0];
+ A[index][0] = temp;}
+ A[0][2] = 0;
+ For (i = 1; i < n; i++) {
+ A[i][2] = 0;
+ For (j = 0; j < i; j++)
+ A[i][2] += A[j][1];
+ Total += A[i][2];}
+ Avg_wt = (float)total / n;
+ Total = 0;
+ Printf(“P BT WT TAT\n”);
+ For (i = 0; i < n; i++) {
+ A[i][3] = A[i][1] + A[i][2];
+ Total += A[i][3];
+ Printf(“P%d %d %d %d\n”, A[i][0],
+ A[i][1], A[i][2], A[i][3]);}
+ Avg_tat = (float)total / n;
+ Printf(“Average Waiting Time= %f”, avg_wt);
+ Printf(“\nAverage Turnaround Time= %f”, avg_tat);}
+
